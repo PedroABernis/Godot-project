@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://bepmu57l7gl8t"]
+
+[ext_resource type="Texture2D" uid="uid://bu62r2qak8ciq" path="res://assets/title-screen.jpg" id="1_g5hjp"]
+[ext_resource type="Script" path="res://scripts/title_screen.gd" id="1_k77h7"]
+[ext_resource type="Texture2D" uid="uid://bcwbqlalx5u52" path="res://assets/game_logo.png" id="2_p8n7n"]
+[ext_resource type="Theme" path="res://title_screen.tres" id="3_xqbtf"]
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k77h7")
+
+[node name="bg" type="TextureRect" parent="."]
+layout_mode = 2
+offset_right = 1024.0
+offset_bottom = 600.0
+texture = ExtResource("1_g5hjp")
+expand_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 60
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_p8n7n")
+
+[node name="start_btn" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_xqbtf")
+text = "START"
+
+[node name="quit_btn" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_xqbtf")
+text = "QUIT GAME"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/start_btn" to="." method="_on_start_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/quit_btn" to="." method="_on_quit_btn_pressed"]
